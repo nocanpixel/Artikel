@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { articles } from "../utils/articles";
-import { useActualWord, useResult, useVisibilityArticle } from "../hooks/store";
+import { useActualWord, useVisibilityArticle } from "../hooks/store";
 import { motion } from "framer-motion";
 import "../App.css";
 import { newWord } from "../utils/regenerateWord";
