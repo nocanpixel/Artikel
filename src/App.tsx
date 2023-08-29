@@ -21,7 +21,7 @@ function App() {
     }, {});
 
     const invertedIncorrectAnswers: { [key: string]: number } = Object.keys(incorrectAnswers)
-    .reverse() // This will reverse the order of keys
+    .reverse()
     .reduce((accumulator: { [key: string]: number }, key: string) => {
       accumulator[key] = incorrectAnswers[key];
       return accumulator;
@@ -39,7 +39,7 @@ function App() {
     }, {});
   
   const invertedCorrectAnswers: { [key: string]: number } = Object.keys(correctAnswers)
-    .reverse() // This will reverse the order of keys
+    .reverse()
     .reduce((accumulator: { [key: string]: number }, key: string) => {
       accumulator[key] = correctAnswers[key];
       return accumulator;
@@ -86,8 +86,6 @@ function App() {
     },
   ];
 
-  console.log(answers);
-
   return (
     <section
       id="main-app"
@@ -115,9 +113,9 @@ function App() {
             <div className="flex flex-col md:flex-row justify-center  gap-4 mt-10">
               <Options />
             </div>
-            <div className="p-4 flex justify-center">
-              <div className="overflow-hidden w-3/4 mt-10">
-                <div className="grid grid-cols-2 gap-4 text-gray-900">
+            <div className="md:p-4 flex justify-center">
+              <div className="overflow-hidden w-full md:w-3/4 mt-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-900">
                   {output?.map((value, index) => (
                     <div
                       key={index}
