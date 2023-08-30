@@ -15,7 +15,7 @@ function App() {
       if (result.status === true) {
         setResult({ status: null });
       }
-    }, 2500);
+    }, 2000);
 
     return () => {
       clearTimeout(cleanBg);
