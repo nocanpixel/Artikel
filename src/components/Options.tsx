@@ -25,6 +25,7 @@ export const Options = () => {
 
   const answerPicked = (element: string) => {
     if(disableButton)return;
+    setArticle(element);
     return evaluateAnswer(element);
   };
 
