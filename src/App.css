@@ -12,11 +12,14 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 
-/* #main-app {
-  
-} */
+#main-app {
+  min-height: 100dvh;
+}
 
 .container-app{
   max-width: 1280px;

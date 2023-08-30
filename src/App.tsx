@@ -2,89 +2,25 @@ import { useEffect } from "react";
 import "./App.css";
 import { Articles } from "./components/Articles";
 import { Options } from "./components/Options";
-import { useResult, useStorageResult } from "./hooks/store";
-import { Answer } from "./hooks/types";
+import { useResult } from "./hooks/store";
+import { useOutput } from "./hooks/useOutput";
 
 function App() {
   const { result, setResult } = useResult();
-  const { answers } = useStorageResult();
+  const output = useOutput();
 
-  const incorrectAnswers: { [key: string]: number } = answers
-    .filter((answer: Answer) => !answer.correct)
-    .reduce((accumulator: { [key: string]: number }, answer: Answer) => {
-      if (!accumulator[answer.picked]) {
-        accumulator[answer.picked] = 1;
-      } else {
-        accumulator[answer.picked]++;
-      }
-      return accumulator;
-    }, {});
-
-    const invertedIncorrectAnswers: { [key: string]: number } = Object.keys(incorrectAnswers)
-    .reverse()
-    .reduce((accumulator: { [key: string]: number }, key: string) => {
-      accumulator[key] = incorrectAnswers[key];
-      return accumulator;
-    }, {});
-
-    const correctAnswers: { [key: string]: number } = answers
-    .filter((answer: Answer) => answer.correct)
-    .reduce((accumulator: { [key: string]: number }, answer: Answer) => {
-      if (!accumulator[answer.picked]) {
-        accumulator[answer.picked] = 1;
-      } else {
-        accumulator[answer.picked]++;
-      }
-      return accumulator;
-    }, {});
-  
-  const invertedCorrectAnswers: { [key: string]: number } = Object.keys(correctAnswers)
-    .reverse()
-    .reduce((accumulator: { [key: string]: number }, key: string) => {
-      accumulator[key] = correctAnswers[key];
-      return accumulator;
-    }, {});
-
+ 
   useEffect(() => {
-    document.title = 'Learn German Vocabulary';
     const cleanBg = setTimeout(() => {
       if (result.status === true) {
         setResult({ status: null });
       }
-    }, 2000);
+    }, 2500);
 
     return () => {
-      document.title = 'Original Page Title';
       clearTimeout(cleanBg);
     };
   }, [result.status]);
-
-  const output = [
-    {
-      title: "Corrects",
-      value: () =>
-        Object.keys(invertedCorrectAnswers).map((answer: string) => (
-          <li key={answer}>
-            {" "}
-            {invertedCorrectAnswers[answer] > 1 ? `${invertedCorrectAnswers[answer]}x ` : ""}
-            {answer}
-          </li>
-        )),
-    },
-    {
-      title: "Incorrects",
-      value: () =>
-        Object.keys(invertedIncorrectAnswers).map((answer: string) => (
-          <li key={answer}>
-            {" "}
-            {invertedIncorrectAnswers[answer] > 1
-              ? `${invertedIncorrectAnswers[answer]}x `
-              : ""}
-            {answer}
-          </li>
-        )),
-    },
-  ];
 
   return (
     <section
@@ -121,8 +57,8 @@ function App() {
                       key={index}
                       className="bg-white rounded-lg p-4 shadow-md"
                     >
-                      <span className="font-bold text-lg">{value.title}</span>
-                      <div className="h-44 max-h-full overflow-auto">
+                      <span className="font-bold text-xl">{value.title}</span>
+                      <div className="h-44 max-h-full overflow-auto mt-3">
                         <ul>{value.value()}</ul>
                       </div>
                     </div>
