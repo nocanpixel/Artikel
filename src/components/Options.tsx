@@ -16,15 +16,15 @@ export const Options = () => {
   const { word, setWord } = useActualWord();
   const { setResult } = useResult();
   const [disableButton, setDissableButton] = useState(false);
-  const { addAnswer, answers } = useStorageResult()
+  const { addAnswer, answers } = useStorageResult();
 
   const run = (value: string) => {
-    if(disableButton||value==="")return;
+    if (disableButton || value === "") return;
     setArticle(value);
   };
 
   const answerPicked = (element: string) => {
-    if(disableButton)return;
+    if (disableButton) return;
     setArticle(element);
     return evaluateAnswer(element);
   };
@@ -49,45 +49,39 @@ export const Options = () => {
           id: answers.length + 1,
           correct: true,
           picked: `${answerPicked} ${word.word}`,
-        })
-        setTimeout(()=>{
+        });
+        setTimeout(() => {
+          setDissableButton(false);
           setWord({
             word: storage.word,
             article: storage.article,
             translation: storage.translation,
             articlePicked: undefined,
           });
-          setDissableButton(false);
-          setArticle("")
-        },2000)
-        setResult(
-          {
-            status: true,
-            answerPicked: `${storage.article} ${storage.word}`,
-          }
-        );
+          setArticle("");
+        }, 2000);
+        setResult({
+          status: true,
+          answerPicked: `${storage.article} ${storage.word}`,
+        });
       }
-    }else{
+    } else {
       addAnswer({
         id: answers.length + 1,
         correct: false,
         picked: `${answerPicked} ${word.word}`,
-      })
-      setWord(
-        {
-          word: word.word,
-          article: word.article,
-          translation: word.translation,
-          articlePicked: answerPicked,
-        }
-      )
-      setArticle(answerPicked)
-      setResult(
-        {
-          status: false,
-          answerPicked: `${answerPicked} ${word.word}`,
-        }
-      )
+      });
+      setWord({
+        word: word.word,
+        article: word.article,
+        translation: word.translation,
+        articlePicked: answerPicked,
+      });
+      setArticle(answerPicked);
+      setResult({
+        status: false,
+        answerPicked: `${answerPicked} ${word.word}`,
+      });
     }
   };
 
@@ -98,7 +92,9 @@ export const Options = () => {
           onClick={() => answerPicked(element.value)}
           onHoverStart={() => run(element.value)}
           onHoverEnd={() => run("")}
-          className={`options font-semibold ${disableButton? 'disabled cursor-auto opacity-5' : 'block'}`}
+          className={`options font-semibold ${
+            disableButton ? "disabled cursor-auto opacity-5" : "block"
+          }`}
           key={element.id}
         >
           {element.value.charAt(0).toUpperCase() + element.value.slice(1)}
