@@ -35,11 +35,13 @@ export const Articles = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className={``}
       >
         {article === "" ? "???"||word.articlePicked : article}
       </motion.span> {" "}
       {word.word}
+      <div className="translation">
+      {`The ${word.translation}`}
+      </div>
     </div>
   );
 };
