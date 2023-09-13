@@ -30,6 +30,7 @@ export const Articles = () => {
   return (
     <div className="text-center">
       {" "}
+      <div className="flex flex-col md:flex-row justify-center gap-6 ">
       <motion.span
         key={animationKey}
         initial={{ opacity: 0 }}
@@ -39,6 +40,7 @@ export const Articles = () => {
         {article === "" ? "???"||word.articlePicked : article}
       </motion.span> {" "}
       {word.word}
+      </div>
       <div className="translation">
       {`The ${word.translation}`}
       </div>
