@@ -9,7 +9,7 @@ import {
 import { newWord } from "../utils/regenerateWord";
 import { articles } from "../utils/articles";
 import confetti from "canvas-confetti";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 interface TrackerItem {
   key: number;
