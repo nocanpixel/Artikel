@@ -72,7 +72,7 @@ export const Options = () => {
         });
       }
     } else {
-      setTracker((prev) => [...prev, { key: id }]);
+      tracker?.find((element)=> element.key === id) ? null : setTracker((prev) => [...prev, { key: id }])
       addAnswer({
         id: answers.length + 1,
         correct: false,
@@ -101,8 +101,10 @@ export const Options = () => {
             onHoverStart={() => run(element.value)}
             onHoverEnd={() => run("")}
             className={`options font-semibold ${tracker?.map((track) =>
-              track.key === element.id ? " ring ring-white bg-red-500 text-white " : null
-            )} ${disableButton ? "disabled cursor-auto opacity-5" : "block"}`}
+              track.key === element.id
+                  ? "ring ring-white bg-red-500 text-white"
+                  : null
+          ).join(" ")} ${disableButton ? "disabled cursor-auto opacity-5" : "block"}`}
             key={element.id}
           >
             {element.value.charAt(0).toUpperCase() + element.value.slice(1)}
