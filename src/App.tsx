@@ -43,12 +43,14 @@ function App() {
         </div>
         <section>
           <div className="mt-20">
-            <span className="title text-8xl font-semibold">
+            <section className="h-screen">
+            <span className="title text-6xl md:text-8xl font-semibold">
               <Articles />
             </span>
             <div className="flex flex-col md:flex-row justify-center  gap-4 mt-10">
               <Options />
             </div>
+            </section>
             <div className="md:p-4 flex justify-center">
               <div className="overflow-hidden w-full md:w-3/4 mt-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-900">
