@@ -12,7 +12,7 @@ function App() {
   const { result, setResult } = useResult();
   const { isLoading } = useLoadArticles();
   const [ cookie, setCookie] = useCookies(["language"]);
-  const { language,setLanguage } = useLanguage();
+  const { setLanguage } = useLanguage();
 
   useEffect(() => {
     const cleanBg = setTimeout(() => {
