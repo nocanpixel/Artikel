@@ -17,7 +17,7 @@ function Language() {
     }
   
   return (
-    <div className="absolute left-0 top-0 w-full bg-black h-screen z-10 py-16 md:py-20 flex justify-center">
+    <div className="absolute z-20 left-0 top-0 w-full bg-black h-screen py-16 md:py-20 flex justify-center">
       <div className=" w-full mx-5 md:w-1/2 bg-white h-full rounded-md p-6">
         <section className="header py-4">
           <h1 className="text-black text-4xl font-bold">
