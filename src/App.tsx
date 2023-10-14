@@ -3,7 +3,6 @@ import "./App.css";
 import { Articles } from "./components/Articles";
 import { Options } from "./components/Options";
 import { useLanguage, useResult } from "./hooks/store";
-import { useOutput } from "./hooks/useOutput";
 import Language from "./components/Language";
 import { useCookies } from "react-cookie";
 import { useLoadArticles } from "./hooks/useLoadArticles";
@@ -11,9 +10,8 @@ import { Skeleton } from "./components/Skeleton";
 
 function App() {
   const { result, setResult } = useResult();
-  const output = useOutput();
   const { isLoading } = useLoadArticles();
-  const [ cookie, removeCookie] = useCookies(["language"]);
+  const [,removeCookie] = useCookies(["language"]);
   const { language,setLanguage } = useLanguage();
 
   useEffect(() => {

@@ -49,10 +49,6 @@ export interface Answer {
   picked: string;
 }
 
-export interface PropsLanguage {
-  
-}
-
 type Language = {
   language: string | null;
   visible: boolean;

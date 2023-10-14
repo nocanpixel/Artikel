@@ -1,12 +1,11 @@
 import { useLanguage } from "../hooks/store";
-import { PropsLanguage } from "../hooks/types";
 import { flags } from "../utils/flags";
 import { useCookies } from "react-cookie";
 
-function Language(props: PropsLanguage) {
+function Language() {
 
     const { setLanguage } = useLanguage();
-    const [cookie, setCookie] = useCookies();
+    const [, setCookie] = useCookies();
 
     interface Flag {
         language: string;
