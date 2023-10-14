@@ -51,7 +51,7 @@ export const useFetchArticles = create<DataFetchArticle>((set) => ({
   articles: null,
   fetchData: async (setIsLoading, language) => {
     try {
-      const response = await fetch("http://localhost:3001/api/", {
+      const response = await fetch("https://tamworth-swift-parrot-gqdq.1.us-1.fl0.io/api/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json", // Set the content type you are sending
