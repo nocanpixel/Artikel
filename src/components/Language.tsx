@@ -41,7 +41,7 @@ function Language() {
                 className=" text-md md:text-md text-gray-600 font-bold hidden group-hover:block  "
                 id="col"
               >
-                {flag.language}
+                {flag.language.charAt(0).toUpperCase()+flag.language.slice(1)}
               </span>
             </div>
           ))}
