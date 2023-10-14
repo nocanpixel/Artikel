@@ -48,3 +48,28 @@ export interface Answer {
   correct: boolean;
   picked: string;
 }
+
+export interface PropsLanguage {
+  
+}
+
+type Language = {
+  language: string | null;
+  visible: boolean;
+}
+
+export interface LanguageStorage {
+  language: Language;
+  setLanguage: (data: Language) => void;
+}
+
+export interface DataFetched {
+  word: string;
+  article: string;
+  translation: string;
+}
+
+export interface DataFetchArticle {
+  articles: DataFetched[] | null;
+  fetchData: (setIsLoading:(loading:boolean)=>void, language:string|null) => Promise<void>;
+}

@@ -2,12 +2,12 @@ import { options } from "../utils/options";
 import { motion } from "framer-motion";
 import {
   useActualWord,
+  useFetchArticles,
   useResult,
   useStorageResult,
   useVisibilityArticle,
 } from "../hooks/store";
 import { newWord } from "../utils/regenerateWord";
-import { articles } from "../utils/articles";
 import confetti from "canvas-confetti";
 import { useState } from "react";
 
@@ -15,28 +15,33 @@ interface TrackerItem {
   key: number;
 }
 
-export const Options = () => {
+interface PropsOptions {
+  disabled: boolean | null;
+}
+
+export const Options = (props:PropsOptions) => {
   const { setArticle } = useVisibilityArticle();
   const { word, setWord } = useActualWord();
   const { setResult } = useResult();
   const [disableButton, setDissableButton] = useState(false);
   const { addAnswer, answers } = useStorageResult();
   const [tracker, setTracker] = useState<TrackerItem[]>([]);
+  const {articles} = useFetchArticles();
 
   const run = (value: string) => {
-    if (disableButton || value === "") return;
+    if (props.disabled || disableButton || value === "") return;
     setArticle(value);
   };
 
   const answerPicked = (element: string, id: number) => {
-    if (disableButton) return;
+    if (disableButton || props.disabled) return;
     setArticle(element);
     return evaluateAnswer(element, id);
   };
 
   const evaluateAnswer = (answerPicked: string, id: number) => {
     const verifyCorrectAnswer = word.article === answerPicked;
-    const regenerateWord = newWord();
+    const regenerateWord = articles&&newWord(articles);
     const storage = articles?.find(
       (element) => element.word === regenerateWord
     );
@@ -104,7 +109,7 @@ export const Options = () => {
               track.key === element.id
                   ? "ring ring-white bg-red-500 text-white"
                   : null
-          ).join(" ")} ${disableButton ? "disabled cursor-auto opacity-5" : "block"}`}
+          ).join(" ")} ${disableButton || props.disabled ? "disabled cursor-auto opacity-5" : "block"}`}
             key={element.id}
           >
             {element.value.charAt(0).toUpperCase() + element.value.slice(1)}
