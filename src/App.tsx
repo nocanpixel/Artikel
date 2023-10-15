@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import "./App.css";
 import { Articles } from "./components/Articles";
 import { Options } from "./components/Options";
-import { useFetchArticles, useLanguage, useResult } from "./hooks/store";
+import { useLanguage, useResult } from "./hooks/store";
 import Language from "./components/Language";
 import { useCookies } from "react-cookie";
 import { useLoadArticles } from "./hooks/useLoadArticles";
