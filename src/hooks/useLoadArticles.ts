@@ -9,7 +9,7 @@ export const useLoadArticles = () => {
 
     useEffect(()=>{
         setIsLoading(true);
-        fetchData(setIsLoading,cookie?.language?.language);
+        Object.keys(cookie).length!==0&&fetchData(setIsLoading,cookie?.language?.language);
     },[cookie])
 
     return {
