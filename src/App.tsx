@@ -47,7 +47,7 @@ function App() {
         {!cookie?.language?.visible||cookie?.language.visible && <Language />}
         <div className="absolute top-7 w-full left-0 flex justify-between items-center px-4 md:px-20 z-10">
           <span className="text-white text-md font-sans font-extrabold text-3xl">
-            {"Developer"}
+            {"Cambe Lerne"}
           </span>
           <span
             onClick={handleRemove}
