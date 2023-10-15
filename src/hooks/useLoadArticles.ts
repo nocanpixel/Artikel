@@ -4,12 +4,12 @@ import { useCookies } from "react-cookie";
 
 export const useLoadArticles = () => {
     const [isLoading, setIsLoading] = useState<boolean|null>(null);
-    const [cookie] = useCookies();
+    const [cookie, setCookie] = useCookies();
     const { articles, fetchData } = useFetchArticles();
 
     useEffect(()=>{
         setIsLoading(true);
-        Object.keys(cookie).length!==0&&fetchData(setIsLoading,cookie?.language?.language);
+        Object.keys(cookie).length!==0?fetchData(setIsLoading,cookie?.language?.language):setCookie("language", {language:null, visible:true});
     },[cookie])
 
     return {

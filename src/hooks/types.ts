@@ -67,5 +67,5 @@ export interface DataFetched {
 
 export interface DataFetchArticle {
   articles: DataFetched[] | null;
-  fetchData: (setIsLoading:(loading:boolean)=>void, language:string|null) => Promise<void>;
+  fetchData: (setIsLoading:(loading:boolean)=>void, language?:string|null) => Promise<void>;
 }
