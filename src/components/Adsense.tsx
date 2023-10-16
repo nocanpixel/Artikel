@@ -6,7 +6,6 @@ export const Adsense = () => {
           try {
             //@ts-ignore
             const adsbygoogle = window.adsbygoogle
-            console.log({ adsbygoogle })
             adsbygoogle.push({})
           } catch (e) {
             console.error(e)
