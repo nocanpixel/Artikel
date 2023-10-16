@@ -9,7 +9,7 @@ export const useLoadArticles = () => {
 
     useEffect(()=>{
         setIsLoading(true);
-        !cookie?.language?.visible||cookie?.language.visible?fetchData(setIsLoading,cookie?.language?.language):setCookie("language", {language:null, visible:true}, {domain:'lernen.cambe.app'});
+        !cookie?.language?.visible||cookie?.language.visible?fetchData(setIsLoading,cookie?.language?.language):setCookie("language", {language:null, visible:true}, {domain:'cambe.app'});
     },[cookie])
 
     return {

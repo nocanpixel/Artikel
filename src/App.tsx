@@ -28,7 +28,7 @@ function App() {
 
   const handleRemove = () => {
     setLanguage({language: null, visible: true});
-    setCookie("language", {language: null, visible: true}, { path: "/", domain: 'lernen.cambe.app'});
+    setCookie("language", {language: null, visible: true}, { path: "/", domain: 'cambe.app'});
   };
 
 
