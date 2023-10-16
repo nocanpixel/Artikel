@@ -76,7 +76,7 @@ function App() {
         </div>
         <section>
           <div>
-            <section className="h-screen flex flex-col justify-center gap-8 relative">
+            <section className="!h-screen flex flex-col justify-center gap-8 relative">
               <span className="title text-6xl md:text-8xl font-semibold">
                 {isLoading ? (
                   <>
@@ -90,7 +90,7 @@ function App() {
               <div className="flex flex-col md:flex-row justify-center  gap-4">
                 <Options disabled={isLoading} />
               </div>
-              <div className="w-full">
+              <div className="w-full flex justify-center">
                 <Adsense/>
               </div>
               <div className=" absolute bottom-10 w-full flex justify-center text-sm text-gray-200">
