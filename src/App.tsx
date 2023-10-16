@@ -89,7 +89,24 @@ function App() {
               <div className="flex flex-col md:flex-row justify-center  gap-4">
                 <Options disabled={isLoading} />
               </div>
-              <div></div>
+              <div>
+                <script
+                  async
+                  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5326726221343916"
+                  crossOrigin="anonymous"
+                ></script>
+                <ins
+                  className="adsbygoogle"
+                  style={{ display: "block" }}
+                  data-ad-client="ca-pub-5326726221343916"
+                  data-ad-slot="9982017010"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"
+                ></ins>
+                <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+              </div>
               <div className=" absolute bottom-10 w-full flex justify-center text-sm text-gray-200">
                 {"Camilo Carreño "}&copy;{" 2023"}
               </div>
