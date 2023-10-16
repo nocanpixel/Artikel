@@ -10,8 +10,8 @@ import { Skeleton } from "./components/Skeleton";
 
 function App() {
   const { result, setResult } = useResult();
-  const { isLoading, } = useLoadArticles();
-  const [ cookie, setCookie] = useCookies(["language"]);
+  const { isLoading } = useLoadArticles();
+  const [cookie, setCookie] = useCookies(["language"]);
   const { setLanguage } = useLanguage();
 
   useEffect(() => {
@@ -27,10 +27,13 @@ function App() {
   }, [result.status]);
 
   const handleRemove = () => {
-    setLanguage({language: null, visible: true});
-    setCookie("language", {language: null, visible: true}, { path: "/", domain: 'cambe.app'});
+    setLanguage({ language: null, visible: true });
+    setCookie(
+      "language",
+      { language: null, visible: true },
+      { path: "/", domain: "cambe.app" }
+    );
   };
-
 
   return (
     <section
@@ -44,7 +47,8 @@ function App() {
       }`}
     >
       <section className="container-app px-4 md:px-20">
-        {!cookie?.language?.visible||cookie?.language.visible && <Language />}
+        {!cookie?.language?.visible ||
+          (cookie?.language.visible && <Language />)}
         <div className="absolute top-7 w-full left-0 flex justify-between items-center px-4 md:px-20 z-10">
           <span className="text-white text-md font-sans font-extrabold text-3xl">
             {"Cambe Lerne"}
@@ -85,6 +89,7 @@ function App() {
               <div className="flex flex-col md:flex-row justify-center  gap-4">
                 <Options disabled={isLoading} />
               </div>
+              <div></div>
               <div className=" absolute bottom-10 w-full flex justify-center text-sm text-gray-200">
                 {"Camilo Carreño "}&copy;{" 2023"}
               </div>
