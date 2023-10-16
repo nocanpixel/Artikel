@@ -7,6 +7,7 @@ import Language from "./components/Language";
 import { useCookies } from "react-cookie";
 import { useLoadArticles } from "./hooks/useLoadArticles";
 import { Skeleton } from "./components/Skeleton";
+import { Adsense } from "./components/Adsense";
 
 function App() {
   const { result, setResult } = useResult();
@@ -90,22 +91,7 @@ function App() {
                 <Options disabled={isLoading} />
               </div>
               <div>
-                <script
-                  async
-                  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5326726221343916"
-                  crossOrigin="anonymous"
-                ></script>
-                <ins
-                  className="adsbygoogle"
-                  style={{ display: "block" }}
-                  data-ad-client="ca-pub-5326726221343916"
-                  data-ad-slot="9982017010"
-                  data-ad-format="auto"
-                  data-full-width-responsive="true"
-                ></ins>
-                <script>
-                  (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
+                <Adsense/>
               </div>
               <div className=" absolute bottom-10 w-full flex justify-center text-sm text-gray-200">
                 {"Camilo Carreño "}&copy;{" 2023"}
