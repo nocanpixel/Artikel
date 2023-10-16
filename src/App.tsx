@@ -90,7 +90,7 @@ function App() {
               <div className="flex flex-col md:flex-row justify-center  gap-4">
                 <Options disabled={isLoading} />
               </div>
-              <div>
+              <div className="w-full">
                 <Adsense/>
               </div>
               <div className=" absolute bottom-10 w-full flex justify-center text-sm text-gray-200">
