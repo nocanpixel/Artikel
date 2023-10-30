@@ -7,7 +7,6 @@ import Language from "./components/Language";
 import { useCookies } from "react-cookie";
 import { useLoadArticles } from "./hooks/useLoadArticles";
 import { Skeleton } from "./components/Skeleton";
-import { Adsense } from "./components/Adsense";
 
 function App() {
   const { result, setResult } = useResult();
@@ -89,9 +88,6 @@ function App() {
               </span>
               <div className="flex flex-col md:flex-row justify-center  gap-4">
                 <Options disabled={isLoading} />
-              </div>
-              <div className="w-full flex justify-center">
-                <Adsense/>
               </div>
               <div className=" absolute bottom-10 w-full flex justify-center text-sm text-gray-200">
                 {"Camilo Carreño "}&copy;{" 2023"}
