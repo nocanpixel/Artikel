@@ -2,7 +2,7 @@ export const flags = [
     {
         id:1,
         language: 'spanish',
-        url: 'https://flagcdn.com/co.svg',
+        url: 'https://flagcdn.com/es.svg',
         class: 'md:col-start-1 md:row-start-2'
     },
     {
