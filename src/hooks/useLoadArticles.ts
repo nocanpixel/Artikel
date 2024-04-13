@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { articles } from "../utils/words";
 
@@ -6,18 +6,22 @@ export const useLoadArticles = () => {
     const [isLoading, setIsLoading] = useState<boolean | null>(null);
     const [cookie, setCookie] = useCookies();
     const languagePicked = cookie?.language?.language;
+    const [myArticles, setMyArticles] = useState<({ word: string; article: string; translation: string; })[]>();
 
-    const myArticles = articles.map((ele) => ({
-        word: ele.word,
-        article: ele.article,
-        translation: ele[languagePicked as 'spanish' | 'english' | 'arabic']
-    }));
+    const checkCookie = useCallback(()=>{
+        !languagePicked && setCookie("language", { language: null, visible: true }, { domain: 'localhost' })
+    },[languagePicked])
 
     useEffect(() => {
-        setIsLoading(true);
-        !cookie?.language?.visible || cookie?.language.visible && setCookie("language", { language: null, visible: true }, { domain: 'cambe.app' })
+        checkCookie();
         setIsLoading(false);
-    }, [])
+        const format = articles.map((ele) => ({
+            word: ele.word,
+            article: ele.article,
+            translation: ele[languagePicked as 'spanish' | 'english' | 'arabic']
+        }))
+        setMyArticles(format)
+    }, [languagePicked])
 
     return {
         myArticles,

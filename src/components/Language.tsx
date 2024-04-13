@@ -13,7 +13,7 @@ function Language() {
 
     const handleFlag = ( flag:Flag ) => {
         setLanguage({language: flag.language, visible: false});
-        setCookie('language', {language: flag.language, visible: false}, {domain:'cambe.app'});
+        setCookie('language', {language: flag.language, visible: false}, {domain:'localhost'});
     }
   
   return (

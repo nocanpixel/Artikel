@@ -11,12 +11,13 @@ export const Articles = () => {
   const [temporalWord, setTemporalWord] = useState('');
   const { myArticles } = useLoadArticles();
 
+
   useEffect(() => {
     const storage = myArticles?.find((element) => element.word === temporalWord);
     if (storage) {
       setWord(storage);
     }
-  }, [temporalWord, setWord]);
+  }, [temporalWord, setWord, myArticles]);
 
   // This will recalculate randomArticleIndex whenever articles.length changes
   // eslint-disable-next-line
