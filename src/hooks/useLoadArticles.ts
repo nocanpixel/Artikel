@@ -1,19 +1,26 @@
 import { useEffect, useState } from "react";
-import { useFetchArticles } from "./store"
 import { useCookies } from "react-cookie";
+import { articles } from "../utils/words";
 
 export const useLoadArticles = () => {
-    const [isLoading, setIsLoading] = useState<boolean|null>(null);
+    const [isLoading, setIsLoading] = useState<boolean | null>(null);
     const [cookie, setCookie] = useCookies();
-    const { articles, fetchData } = useFetchArticles();
+    const languagePicked = cookie?.language?.language;
 
-    useEffect(()=>{
+    const myArticles = articles.map((ele) => ({
+        word: ele.word,
+        article: ele.article,
+        translation: ele[languagePicked as 'spanish' | 'english' | 'arabic']
+    }));
+
+    useEffect(() => {
         setIsLoading(true);
-        !cookie?.language?.visible||cookie?.language.visible?fetchData(setIsLoading,cookie?.language?.language):setCookie("language", {language:null, visible:true}, {domain:'cambe.app'});
-    },[cookie])
+        !cookie?.language?.visible || cookie?.language.visible && setCookie("language", { language: null, visible: true }, { domain: 'localhost' })
+        setIsLoading(false);
+    }, [])
 
     return {
-        articles,
+        myArticles,
         isLoading
     }
 }

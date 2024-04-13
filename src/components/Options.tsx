@@ -2,7 +2,6 @@ import { options } from "../utils/options";
 import { motion } from "framer-motion";
 import {
   useActualWord,
-  useFetchArticles,
   useResult,
   useStorageResult,
   useVisibilityArticle,
@@ -10,6 +9,7 @@ import {
 import { newWord } from "../utils/regenerateWord";
 import confetti from "canvas-confetti";
 import { useState } from "react";
+import { useLoadArticles } from "../hooks/useLoadArticles";
 
 interface TrackerItem {
   key: number;
@@ -26,7 +26,7 @@ export const Options = (props:PropsOptions) => {
   const [disableButton, setDissableButton] = useState(false);
   const { addAnswer, answers } = useStorageResult();
   const [tracker, setTracker] = useState<TrackerItem[]>([]);
-  const {articles} = useFetchArticles();
+  const { myArticles } = useLoadArticles();
 
   const run = (value: string) => {
     if (props.disabled || disableButton || value === "") return;
@@ -41,8 +41,8 @@ export const Options = (props:PropsOptions) => {
 
   const evaluateAnswer = (answerPicked: string, id: number) => {
     const verifyCorrectAnswer = word.article === answerPicked;
-    const regenerateWord = articles&&newWord(articles);
-    const storage = articles?.find(
+    const regenerateWord = newWord(myArticles);
+    const storage = myArticles?.find(
       (element) => element.word === regenerateWord
     );
     if (verifyCorrectAnswer) {
