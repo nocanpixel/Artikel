@@ -13,18 +13,20 @@ export const Articles = () => {
 
 
   useEffect(() => {
-    const storage = myArticles?.find((element) => element.word === temporalWord);
-    if (storage) {
-      setWord(storage);
+    if(myArticles){
+      const storage = myArticles?.find((element) => element.word === temporalWord);
+      if (storage) {
+        setWord(storage);
+      }
     }
   }, [temporalWord, setWord, myArticles]);
 
   // This will recalculate randomArticleIndex whenever articles.length changes
   // eslint-disable-next-line
   useEffect(() => {
-    const myArticle = myArticles && newWord(myArticles);
+    const myArticle = myArticles&&newWord(myArticles);
     myArticle && setTemporalWord(myArticle);
-  }, []);
+  }, [myArticles]);
 
   // Generate a unique key based on the 'article' value
   const animationKey = article || "defaultKey";
