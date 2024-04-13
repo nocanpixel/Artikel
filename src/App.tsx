@@ -31,7 +31,7 @@ function App() {
     setCookie(
       "language",
       { language: null, visible: true },
-      { path: "/", domain: "localhost" }
+      { path: "/", domain: "cambe.app" }
     );
   };
 

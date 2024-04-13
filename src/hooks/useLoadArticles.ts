@@ -9,7 +9,7 @@ export const useLoadArticles = () => {
     const [myArticles, setMyArticles] = useState<({ word: string; article: string; translation: string; })[]>();
 
     const checkCookie = useCallback(()=>{
-        !languagePicked && setCookie("language", { language: null, visible: true }, { domain: 'localhost' })
+        !languagePicked && setCookie("language", { language: null, visible: true }, { domain: 'cambe.app' })
     },[languagePicked])
 
     useEffect(() => {
