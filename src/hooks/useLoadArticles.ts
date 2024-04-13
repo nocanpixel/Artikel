@@ -18,7 +18,7 @@ export const useLoadArticles = () => {
         const format = articles.map((ele) => ({
             word: ele.word,
             article: ele.article,
-            translation: ele[languagePicked as 'spanish' | 'english' | 'arabic']
+            translation: ele[languagePicked as 'spanish' | 'english' | 'arabic']||'english'
         }))
         setMyArticles(format)
     }, [languagePicked])

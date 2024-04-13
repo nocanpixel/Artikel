@@ -41,6 +41,7 @@ export const Options = (props:PropsOptions) => {
 
   const evaluateAnswer = (answerPicked: string, id: number) => {
     const verifyCorrectAnswer = word.article === answerPicked;
+    //@ts-ignore
     const regenerateWord = newWord(myArticles);
     const storage = myArticles?.find(
       (element) => element.word === regenerateWord
