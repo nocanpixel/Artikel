@@ -15,7 +15,7 @@ export const useLoadArticles = () => {
 
     useEffect(() => {
         setIsLoading(true);
-        !cookie?.language?.visible || cookie?.language.visible && setCookie("language", { language: null, visible: true }, { domain: 'localhost' })
+        !cookie?.language?.visible || cookie?.language.visible && setCookie("language", { language: null, visible: true }, { domain: 'cambe.app' })
         setIsLoading(false);
     }, [])
 
